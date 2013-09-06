@@ -1,13 +1,13 @@
 class UrlMappings {
 
-	static mappings = {
-		"/$controller/$action?/$id?"{
-			constraints {
-				// apply constraints here
-			}
-		}
+  static mappings = {
+    "/$controller/$action?/$id?"{ constraints { } }
 
-		"/"(view:"/index")
-		"500"(view:'/error')
-	}
+    /* Define index controller and action */
+    "/" {
+      controller = "VideoPush"
+      action = "index"
+    }
+    "500"(view:'/error')
+  }
 }

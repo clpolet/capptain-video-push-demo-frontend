@@ -18,7 +18,9 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner"><a href="http://grails.org"><img src="${resource(dir: 'images', file: 'grails_logo.png')}" alt="Grails"/></a></div>
+		<div id="capptainLogo" role="banner"><a href="http://www.capptain.com"><img src="${resource(dir: 'images', file: 'capptain_logo.png')}" alt="Capptain"/></a>
+		  <h1><g:message code="default.main.title"/></h1>
+		</div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
