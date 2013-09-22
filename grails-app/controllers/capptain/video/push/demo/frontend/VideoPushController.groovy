@@ -41,7 +41,7 @@ class VideoPushController
     videoPushService.send(videoPushInstance);
 
     /* Go back to index */
-    // render(view: "index", model: [videoPushInstance: videoPushInstance]);
+    render(view: "index", model: [videoPushInstance: videoPushInstance]);
   }
 }
 

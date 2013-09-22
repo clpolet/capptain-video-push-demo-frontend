@@ -46,23 +46,22 @@ class VideoPushService
     message = ["appid" : videoPushInstance.push.appId, "kind" : AnnouncementDefaultValues.KIND, "id" : campaignId, "deviceid" : videoPushInstance.device.deviceId, "key" : activateKey];
     sendPush(message,baseUrl)
 
-    sleep 2000
-    /* Create Announcement campaign */
-    createKey = hmac_sha1(videoPushInstance.push.apiKey, jsonDataPush )
-    baseUrl = String.format(PushDefaultValues.URL_FORMAT, PushDefaultValues.DOMAIN, PushDefaultValues.CREATE_METHOD)
-    message = ["appid" : videoPushInstance.push.appId, "kind" : DataPushDefaultValues.KIND, "data" : jsonDataPush, "deviceid" : videoPushInstance.device.deviceId, "key" : createKey];
-    campaignId = sendPush(message,baseUrl)
-
-    /* Activate Announcement campaign */
-    activateKey = hmac_sha1(videoPushInstance.push.apiKey, campaignId )
-    baseUrl = String.format(PushDefaultValues.URL_FORMAT, PushDefaultValues.DOMAIN, PushDefaultValues.ACTIVATE_METHOD)
-    message = ["appid" : videoPushInstance.push.appId, "kind" : DataPushDefaultValues.KIND, "id" : campaignId, "deviceid" : videoPushInstance.device.deviceId, "key" : activateKey];
-    sendPush(message,baseUrl)
+//    /* Create Announcement campaign */
+//    createKey = hmac_sha1(videoPushInstance.push.apiKey, jsonDataPush )
+//    baseUrl = String.format(PushDefaultValues.URL_FORMAT, PushDefaultValues.DOMAIN, PushDefaultValues.CREATE_METHOD)
+//    message = ["appid" : videoPushInstance.push.appId, "kind" : DataPushDefaultValues.KIND, "data" : jsonDataPush, "deviceid" : videoPushInstance.device.deviceId, "key" : createKey];
+//    campaignId = sendPush(message,baseUrl)
+//
+//    /* Activate Announcement campaign */
+//    activateKey = hmac_sha1(videoPushInstance.push.apiKey, campaignId )
+//    baseUrl = String.format(PushDefaultValues.URL_FORMAT, PushDefaultValues.DOMAIN, PushDefaultValues.ACTIVATE_METHOD)
+//    message = ["appid" : videoPushInstance.push.appId, "kind" : DataPushDefaultValues.KIND, "id" : campaignId, "deviceid" : videoPushInstance.device.deviceId, "key" : activateKey];
+//    sendPush(message,baseUrl)
 
     /* Send a DataPush test campaign */
-    //    baseUrl = String.format(PushDefaultValues.URL_FORMAT, PushDefaultValues.DOMAIN, PushDefaultValues.TEST_METHOD)
-    //    message = ["appid" : videoPushInstance.push.appId, "kind" : DataPushDefaultValues.KIND, "data" : jsonDataPush, "deviceid" : videoPushInstance.device.deviceId, "key" : testKey];
-    //    sendPush(message,baseUrl)
+        baseUrl = String.format(PushDefaultValues.URL_FORMAT, PushDefaultValues.DOMAIN, PushDefaultValues.TEST_METHOD)
+        message = ["appid" : videoPushInstance.push.appId, "kind" : DataPushDefaultValues.KIND, "data" : jsonDataPush, "deviceid" : videoPushInstance.device.deviceId, "key" : testKey];
+        sendPush(message,baseUrl)
   }
 
   private def sendPush(campaign, baseUrl)
