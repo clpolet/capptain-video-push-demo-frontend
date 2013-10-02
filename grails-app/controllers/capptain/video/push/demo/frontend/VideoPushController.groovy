@@ -1,5 +1,7 @@
 package capptain.video.push.demo.frontend
 
+import grails.validation.ValidationException
+
 
 
 
@@ -11,6 +13,10 @@ class VideoPushController
   def propertiesCookieService;
   def videoPushService;
 
+  /**
+   * Video push frontend index page processing
+   * @return videoPushInstance the video push
+   */
   def index()
   {
     /* Get an empty VideoPush for this new session */
@@ -26,10 +32,20 @@ class VideoPushController
     [videoPushInstance: videoPushInstance]
   }
 
+  /**
+   * Get video push from user form then send it
+   */
   def sendVideoPush()
   {
     /* Retrieve VideoPush Values from HTML form */
     def videoPushInstance = new VideoPush(params.videoPush);
+
+    /* Validate form */
+    if(!(videoPushInstance.validate()))
+    {
+      render(view: "index", model: [videoPushInstance: videoPushInstance]);
+      return
+    }
 
     /* Save push to Cookie */
     propertiesCookieService.propertiesToCookie(videoPushInstance.push.properties, Push.class);
@@ -38,7 +54,13 @@ class VideoPushController
     propertiesCookieService.propertiesToCookie(videoPushInstance.device.properties, Device.class);
 
     /* Send video push */
-    videoPushService.send(videoPushInstance);
+    try
+    {
+      videoPushService.send(videoPushInstance);
+    }catch (ValidationException e)
+    {
+      videoPushInstance.errors = e.errors
+    }
 
     /* Go back to index */
     render(view: "index", model: [videoPushInstance: videoPushInstance]);

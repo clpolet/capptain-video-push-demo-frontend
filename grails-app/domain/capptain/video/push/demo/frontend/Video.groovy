@@ -1,5 +1,6 @@
 package capptain.video.push.demo.frontend
 
+@grails.validation.Validateable
 class Video
 {
 
@@ -10,5 +11,6 @@ class Video
   /* Disable persistency */
   static mapWith = "none"
 
-  static constraints = { }
+  static constraints =
+  {  url url:true, blank:false }
 }

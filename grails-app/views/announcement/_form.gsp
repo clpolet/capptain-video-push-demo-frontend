@@ -9,9 +9,9 @@
 			${flash.message}
 		</div>
 	</g:if>
-	<g:hasErrors bean="${announcementInstance}">
+	<g:hasErrors bean="${videoPushInstance?.announcement}">
 		<ul class="errors" role="alert">
-			<g:eachError bean="${announcementInstance}" var="error">
+			<g:eachError bean="${videoPushInstance?.announcement}" var="error">
 				<li
 					<g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message
 						error="${error}" /></li>
@@ -20,7 +20,7 @@
 	</g:hasErrors>
 
 	<div
-		class="fieldcontain ${hasErrors(bean: announcementInstance, field: 'videoPush.announcement.actionUrl', 'error')} ">
+		class="fieldcontain ${hasErrors(bean: videoPushInstance?.announcement, field: 'videoPush.announcement.actionUrl', 'error')} ">
 		<label for="videoPush.announcement.actionUrl"> <g:message
 				code="announcement.actionUrl.label" />
 
@@ -29,7 +29,7 @@
 			value="${videoPushInstance?.announcement?.actionUrl}" />
 	</div>
 	<div
-		class="fieldcontain ${hasErrors(bean: announcementInstance, field: 'videoPush.announcement.notificationMessage', 'error')} ">
+		class="fieldcontain ${hasErrors(bean: videoPushInstance?.announcement, field: 'videoPush.announcement.notificationMessage', 'error')} ">
 		<label for="videoPush.announcement.notificationMessage"> <g:message
 				code="announcement.notificationMessage.label" />
 

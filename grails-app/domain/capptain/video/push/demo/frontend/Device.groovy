@@ -1,9 +1,9 @@
 package capptain.video.push.demo.frontend
 
+@grails.validation.Validateable
 class Device
 {
 
-  String name
   String deviceId
 
   static belongsTo = [videoPush:VideoPush]
@@ -12,6 +12,5 @@ class Device
   static mapWith = "none"
 
   static constraints =
-  {
-  }
+  { deviceId blank: false }
 }

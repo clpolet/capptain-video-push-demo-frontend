@@ -1,5 +1,6 @@
 package capptain.video.push.demo.frontend
 
+@grails.validation.Validateable
 class Push
 {
 
@@ -13,5 +14,7 @@ class Push
 
   static constraints =
   {
+    appId blank: false
+    apiKey blank: false
   }
 }
