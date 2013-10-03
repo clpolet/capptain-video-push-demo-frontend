@@ -97,10 +97,10 @@
     </g:hasErrors>
     <g:form action="sendVideoPush">
       <fieldset class="form">
-        <g:render template="/Video/form"/>
+        <g:render template="/video/form"/>
       </fieldset>
       <fieldset class="form">
-        <g:render template="/Announcement/form"/>
+        <g:render template="/announcement/form"/>
       </fieldset>
       <fieldset class="form">
          <g:render template="/device/form"/>
